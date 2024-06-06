@@ -1,6 +1,6 @@
 import mongoose, { Document, Schema } from "mongoose";
 
-interface VandorDoc extends Document {
+interface VendorDoc extends Document {
   name: string;
   ownerName: string;
   foodType: [string];
@@ -16,7 +16,7 @@ interface VandorDoc extends Document {
   // foods: any,
 }
 
-const VandorSchema = new Schema(
+const VendorSchema = new Schema(
   {
     name: { type: String, required: true },
     ownerName: { type: String, required: true },
@@ -40,15 +40,15 @@ const VandorSchema = new Schema(
   }
 );
 
-const VandorModel = mongoose.model<VandorDoc>("Vandor", VandorSchema);
+const VendorModel = mongoose.model<VendorDoc>("Vendor", VendorSchema);
 
-export { VandorModel };
+export { VendorModel };
 
-export const getAllVandors = () => VandorModel.find();
-export const getVandorById = (id: string) => VandorModel.findById(id);
-export const getVandorByEmail = (email: string) =>
-  VandorModel.findOne({ email });
-export const createVandor = (values: Record<string, any>) =>
-  new VandorModel(values).save().then((vandor) => vandor.toJSON());
-export const updateVandor = (id: string, values: Record<string, any>) =>
-  VandorModel.findByIdAndUpdate(id, values);
+export const getAllVandors = () => VendorModel.find();
+export const getVendorById = (id: string) => VendorModel.findById(id);
+export const getVendorByEmail = (email: string) =>
+  VendorModel.findOne({ email });
+export const createVendor = (values: Record<string, any>) =>
+  new VendorModel(values).save().then((vendor) => vendor.toJSON());
+export const updateVendor = (id: string, values: Record<string, any>) =>
+  VendorModel.findByIdAndUpdate(id, values);
